@@ -1,0 +1,43 @@
+# Knowledge Vault Configuration
+# Copy this file to config.yaml and fill in your values
+
+server:
+  host: "127.0.0.1"
+  port: 8080
+  # Single-threaded for resource constraints
+  workers: 1
+
+database:
+  # SQLite database path (relative to working directory)
+  path: "./data/knowledge_vault.db"
+  # Maximum connections (keep low for memory constraints)
+  max_connections: 2
+
+security:
+  # JWT secret key - MUST be at least 32 bytes
+  # Generate with: openssl rand -base64 32
+  jwt_secret: "CHANGE_ME_TO_A_SECURE_32_BYTE_OR_LONGER_SECRET_KEY"
+  # JWT token expiry in hours
+  jwt_expiry_hours: 24
+
+  # Master encryption key for at-rest encryption (AES-256)
+  # Generate with: openssl rand -base64 32
+  encryption_key: "CHANGE_ME_TO_A_SECURE_32_BYTE_ENCRYPTION_KEY_HERE"
+
+  # Argon2id parameters (tuned for 100MB RAM, 1 CPU constraint)
+  argon2:
+    memory_kib: 19456  # ~19MB
+    iterations: 2
+    parallelism: 1
+
+logging:
+  # Log level: trace, debug, info, warn, error
+  level: "info"
+  # Audit log retention days (0 = unlimited)
+  audit_retention_days: 90
+
+cors:
+  # Allowed origins for CORS
+  allowed_origins:
+    - "http://localhost:5173"
+    - "http://127.0.0.1:5173"
