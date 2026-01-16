@@ -216,8 +216,8 @@ impl Database {
 
         conn.execute(
             "INSERT INTO articles (id, title, content_encrypted, content_nonce, author_id, is_published, created_at, updated_at)
-             VALUES (?1, ?2, ?3, ?4, ?5, 0, ?6, ?6)",
-            params![id, article.title, encrypted, nonce, author_id, now],
+             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?7)",
+            params![id, article.title, encrypted, nonce, author_id, article.is_published as i32, now],
         )?;
 
         // Update FTS index
@@ -239,7 +239,7 @@ impl Database {
             title: article.title.clone(),
             content: article.content.clone(),
             author_id: author_id.to_string(),
-            is_published: false,
+            is_published: article.is_published,
             created_at: now.clone(),
             updated_at: now,
         })
