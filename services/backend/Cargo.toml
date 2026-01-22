@@ -16,7 +16,7 @@ actix-cors = "0.7"
 tokio = { version = "1.35", features = ["rt", "macros"] }
 
 # Database
-rusqlite = { version = "0.30", features = ["bundled", "vtab"] }
+rusqlite = { version = "0.31", features = ["bundled"] }
 r2d2 = "0.8"
 r2d2_sqlite = "0.24"
 
@@ -47,6 +47,7 @@ uuid = { version = "1.6", features = ["v4", "serde"] }
 
 # Date/time
 chrono = { version = "0.4", features = ["serde"] }
+time = "0.3"
 
 # Logging
 tracing = "0.1"
@@ -63,6 +64,9 @@ validator = { version = "0.16", features = ["derive"] }
 # Cookie handling
 actix-web-httpauth = "0.8"
 cookie = { version = "0.18", features = ["secure"] }
+
+# Async utilities
+futures-util = "0.3"
 
 [dev-dependencies]
 actix-rt = "2.9"
