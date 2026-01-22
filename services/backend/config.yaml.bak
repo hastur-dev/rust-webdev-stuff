@@ -1,0 +1,28 @@
+# Backend Configuration
+# Copy to config.yaml and customize
+
+server:
+  host: "127.0.0.1"
+  port: 8080
+  workers: 1
+
+database:
+  path: "./data/knowledge_vault.db"
+  max_connections: 2
+
+security:
+  jwt_secret: "CHANGE_ME_generate_with_openssl_rand_base64_32"
+  jwt_expiry_hours: 24
+  encryption_key: "CHANGE_ME_generate_with_openssl_rand_base64_32"
+  argon2:
+    memory_kib: 19456
+    iterations: 2
+    parallelism: 1
+
+logging:
+  level: "info"
+  audit_retention_days: 90
+
+cors:
+  allowed_origins:
+    - "http://localhost:5173"
